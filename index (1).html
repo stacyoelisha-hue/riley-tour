@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riley Green - That's Just Me Tour</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .ticket-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .ticket-card:hover {
+            transform: translateY(-4px);
+        }
+        .ticket-card.selected {
+            border-color: #c084fc;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(236, 72, 153, 0.2));
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans flex flex-col items-center justify-center p-4">
+
+    <!-- Main Container -->
+    <div class="max-w-3xl w-full bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl relative overflow-hidden my-8">
+        
+        <!-- Hero Image Banner -->
+        <div class="relative w-full h-56 sm:h-72 rounded-xl overflow-hidden mb-8 border border-slate-800 shadow-xl">
+            <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=1200&q=80" 
+                 alt="Riley Green Live Concert" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+            
+            <div class="absolute bottom-4 left-4 right-4 text-center sm:text-left">
+                <span class="px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase bg-purple-500/80 text-white shadow-md inline-block mb-2">Official World Tour</span>
+                <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase drop-shadow-md">
+                    That's Just Me Tour
+                </h1>
+                <p class="text-slate-300 text-xs sm:text-sm font-medium">Riley Green Live in Concert</p>
+            </div>
+        </div>
+
+        <form id="ticketForm" class="space-y-6 relative z-10">
+            <!-- Ticket Type Selection -->
+            <div>
+                <label class="block text-sm font-semibold uppercase tracking-wider text-slate-300 mb-3">
+                    1. Select Ticket Tier
+                </label>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <!-- Option 1 -->
+                    <div onclick="selectTier(this, 'General Admission', 120)" 
+                         class="ticket-card selected cursor-pointer rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden flex flex-col justify-between">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" 
+                             alt="General Admission Crowd" 
+                             class="w-full h-28 object-cover">
+                        <div class="p-4 flex justify-between items-center">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-ticket text-purple-400"></i>
+                                    <h3 class="font-bold text-slate-100">General Admission</h3>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-1">Main floor standing area access</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-lg font-extrabold text-purple-400">$120</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Option 2 -->
+                    <div onclick="selectTier(this, 'VIP Lounge Pass', 225)" 
+                         class="ticket-card cursor-pointer rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden flex flex-col justify-between">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80" 
+                             alt="VIP Lounge Experience" 
+                             class="w-full h-28 object-cover">
+                        <div class="p-4 flex justify-between items-center">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-star text-pink-400"></i>
+                                    <h3 class="font-bold text-slate-100">VIP Lounge Pass</h3>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-1">Early entry + VIP bar access</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-lg font-extrabold text-pink-400">$225</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Option 3 -->
+                    <div onclick="selectTier(this, 'Front Row Fan Zone', 375)" 
+                         class="ticket-card cursor-pointer rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden flex flex-col justify-between">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" 
+                             alt="Front Row Stage View" 
+                             class="w-full h-28 object-cover">
+                        <div class="p-4 flex justify-between items-center">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-fire text-amber-400"></i>
+                                    <h3 class="font-bold text-slate-100">Front Row Fan Zone</h3>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-1">Guaranteed front 3 rows position</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-lg font-extrabold text-amber-400">$375</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Option 4 -->
+                    <div onclick="selectTier(this, 'Meet & Greet + Backstage', 650)" 
+                         class="ticket-card cursor-pointer rounded-xl border border-slate-700 bg-slate-800/50 overflow-hidden flex flex-col justify-between">
+                        <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=80" 
+                             alt="Backstage Pass Experience" 
+                             class="w-full h-28 object-cover">
+                        <div class="p-4 flex justify-between items-center">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-crown text-indigo-400"></i>
+                                    <h3 class="font-bold text-slate-100">Backstage & Meet Riley</h3>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-1">Photo op with Riley + VIP Merch</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-lg font-extrabold text-indigo-400">$650</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Fan Contact Details -->
+            <div class="space-y-4">
+                <label class="block text-sm font-semibold uppercase tracking-wider text-slate-300">
+                    2. Fan Details
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1">Your Full Name *</label>
+                        <input type="text" id="fanName" required placeholder="Alex Morgan" 
+                               class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-purple-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1">Your Email Address *</label>
+                        <input type="email" id="fanEmail" required placeholder="alex@example.com" 
+                               class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-purple-500 transition">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1">Phone Number *</label>
+                        <input type="tel" id="fanPhone" required placeholder="+1 (555) 000-0000" 
+                               class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-purple-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1">Number of Tickets</label>
+                        <select id="ticketQty" onchange="updateTotal()" 
+                                class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-purple-500 transition">
+                            <option value="1">1 Ticket</option>
+                            <option value="2">2 Tickets</option>
+                            <option value="3">3 Tickets</option>
+                            <option value="4">4 Tickets</option>
+                            <option value="5">5 Tickets</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">Special Requests / Seating Preferences (Optional)</label>
+                    <textarea id="fanNotes" rows="2" placeholder="e.g. Wheelchair accessibility required..." 
+                              class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-purple-500 transition resize-none"></textarea>
+                </div>
+            </div>
+
+            <!-- Price Summary & Submit -->
+            <div class="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                    <span class="text-xs text-slate-400 uppercase tracking-wider block">Estimated Total</span>
+                    <span id="totalPriceDisplay" class="text-2xl font-black text-slate-100">$120 USD</span>
+                </div>
+
+                <button type="submit" 
+                        class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold tracking-wide shadow-lg hover:shadow-purple-500/25 transition duration-200 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Submit Booking Request
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-slate-900 border border-slate-800 max-w-md w-full rounded-2xl p-6 sm:p-8 text-center shadow-2xl relative">
+            <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            
+            <h2 class="text-2xl font-bold text-slate-100 mb-2">Request Confirmed!</h2>
+            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                Your request has been confirmed for <span id="modalTicketTier" class="font-semibold text-purple-400">General Admission</span>. An agent will reach out to you for final arrangements.
+            </p>
+
+            <div class="bg-slate-800/60 rounded-xl p-4 text-left text-xs text-slate-400 space-y-1.5 mb-6 border border-slate-700/50">
+                <div class="flex justify-between"><span>Tour:</span> <span class="text-slate-200 font-medium">That's Just Me Tour</span></div>
+                <div class="flex justify-between"><span>Name:</span> <span id="modalName" class="text-slate-200 font-medium"></span></div>
+                <div class="flex justify-between"><span>Email:</span> <span id="modalEmail" class="text-slate-200 font-medium"></span></div>
+                <div class="flex justify-between"><span>Quantity:</span> <span id="modalQty" class="text-slate-200 font-medium"></span></div>
+                <div class="flex justify-between"><span>Est. Total:</span> <span id="modalTotal" class="text-slate-200 font-medium"></span></div>
+            </div>
+
+            <button onclick="closeModal()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 transition">
+                Done
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const AGENT_EMAIL = "artistbrandandbookinginquiries@gmail.com";
+
+        let selectedTierName = "General Admission";
+        let selectedTierPrice = 120;
+
+        function selectTier(element, name, price) {
+            document.querySelectorAll('.ticket-card').forEach(card => card.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedTierName = name;
+            selectedTierPrice = price;
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const qty = parseInt(document.getElementById('ticketQty').value);
+            const total = selectedTierPrice * qty;
+            document.getElementById('totalPriceDisplay').innerText = `$${total} USD`;
+        }
+
+        document.getElementById('ticketForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('fanName').value;
+            const email = document.getElementById('fanEmail').value;
+            const phone = document.getElementById('fanPhone').value;
+            const qty = document.getElementById('ticketQty').value;
+            const notes = document.getElementById('fanNotes').value;
+            const total = selectedTierPrice * parseInt(qty);
+
+            const subject = encodeURIComponent(`That's Just Me Tour Ticket Request - ${name}`);
+            const body = encodeURIComponent(
+                `Hello Riley Booking Team,\n\n` +
+                `A fan has submitted a ticket booking request for the "That's Just Me Tour":\n\n` +
+                `Ticket Tier: ${selectedTierName}\n` +
+                `Quantity: ${qty}\n` +
+                `Estimated Total: $${total} USD\n\n` +
+                `Fan Details:\n` +
+                `- Name: ${name}\n` +
+                `- Email: ${email}\n` +
+                `- Phone: ${phone}\n` +
+                `- Notes/Requests: ${notes || 'None'}\n\n` +
+                `Please contact the fan to confirm final arrangements.`
+            );
+
+            window.location.href = `mailto:${AGENT_EMAIL}?subject=${subject}&body=${body}`;
+
+            document.getElementById('modalTicketTier').innerText = selectedTierName;
+            document.getElementById('modalName').innerText = name;
+            document.getElementById('modalEmail').innerText = email;
+            document.getElementById('modalQty').innerText = `${qty} ticket(s)`;
+            document.getElementById('modalTotal').innerText = `$${total} USD`;
+            document.getElementById('confirmModal').classList.remove('hidden');
+        });
+
+        function closeModal() {
+            document.getElementById('confirmModal').classList.add('hidden');
+            document.getElementById('ticketForm').reset();
+            updateTotal();
+        }
+    </script>
+</body>
+</html>
+
